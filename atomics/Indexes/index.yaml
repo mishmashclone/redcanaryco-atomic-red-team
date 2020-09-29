@@ -49647,6 +49647,38 @@ collection:
           del %TEMP%\T1119_3.txt >nul 2>&1
           del %TEMP%\T1119_4.txt >nul 2>&1
         name: command_prompt
+    - name: Run BloodHound
+      auto_generated_guid: 552df8a5-4075-49d7-a88e-2b7ee6c2147a
+      description: desc
+      supported_platforms:
+      - windows
+      input_arguments:
+        sharphound_exe:
+          description: Location of the sharphound executable
+          type: String
+          default: PathToAtomicsFolder\T1119\bin\SharpHound.exe
+      dependency_executor_name: powershell
+      dependencies:
+      - description: 'Computer must be domain joined
+
+'
+        prereq_command: 'if((Get-CIMInstance -Class Win32_ComputerSystem).PartOfDomain)
+          { exit 0} else { exit 1}
+
+'
+        get_prereq_command: 'Write-Host Joining this computer to a domain must be
+          done manually
+
+'
+      - description: 'SharpHound executable must exist at #{sharphound_exe}'
+        prereq_command: 'if (Test-Path #{sharphound_exe}) {exit 0} else {exit 1} '
+        get_prereq_command: |
+          New-Item -ItemType Directory (Split-Path #{sharphound_exe}) -Force | Out-Null
+          Invoke-WebRequest "https://github.com/BloodHoundAD/BloodHound/raw/67cf1dee4f6c8d77a71b3eceb49b4040a5eb9550/Ingestors/SharpHound.exe" -OutFile #{sharphound_exe}
+      executor:
+        command: "#{sharphound_exe}"
+        name: command_prompt
+        cleanup_command: del %TEMP%\*_BloodHound.zip >nul 2>&1
   T1115:
     technique:
       id: attack-pattern--30973a08-aed9-4edf-8604-9084ce1b5c4f

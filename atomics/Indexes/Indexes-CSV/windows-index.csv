@@ -366,6 +366,7 @@ collection,T1119,Automated Collection,1,Automated Collection Command Prompt,cb37
 collection,T1119,Automated Collection,2,Automated Collection PowerShell,634bd9b9-dc83-4229-b19f-7f83ba9ad313,powershell
 collection,T1119,Automated Collection,3,Recon information for export with PowerShell,c3f6d794-50dd-482f-b640-0384fbb7db26,powershell
 collection,T1119,Automated Collection,4,Recon information for export with Command Prompt,aa1180e2-f329-4e1e-8625-2472ec0bfaf3,command_prompt
+collection,T1119,Automated Collection,5,Run BloodHound,552df8a5-4075-49d7-a88e-2b7ee6c2147a,command_prompt
 collection,T1115,Clipboard Data,1,Utilize Clipboard to store or execute commands from,0cd14633-58d4-4422-9ede-daa2c9474ae7,command_prompt
 collection,T1115,Clipboard Data,2,Execute Commands from Clipboard using PowerShell,d6dc21af-bec9-4152-be86-326b6babd416,powershell
 collection,T1056.004,Credential API Hooking,1,Hook PowerShell TLS Encrypt/Decrypt Messages,de1934ea-1fbf-425b-8795-65fb27dd7e33,powershell

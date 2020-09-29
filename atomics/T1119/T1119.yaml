@@ -67,6 +67,7 @@ atomic_tests:
       del %TEMP%\T1119_4.txt >nul 2>&1
     name: command_prompt
 - name: Run BloodHound
+  auto_generated_guid: 552df8a5-4075-49d7-a88e-2b7ee6c2147a
   description: desc
   supported_platforms:
   - windows
